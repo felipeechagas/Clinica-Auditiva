@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <title>Administração de Postagens</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/admin-style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h2>Painel de Administração de Postagens</h2>
+        <form id="postForm">
+            <div class="form-group">
+                <label for="date">Data:</label>
+                <input type="text" class="form-control" id="date" placeholder="Digite a data (e.g., 23 august)" required>
+            </div>
+            <div class="form-group">
+                <label for="title">Título:</label>
+                <input type="text" class="form-control" id="title" placeholder="Digite o título da postagem" required>
+            </div>
+            <div class="form-group">
+                <label for="content">Conteúdo:</label>
+                <textarea class="form-control" id="content" placeholder="Digite o conteúdo da postagem" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary">Adicionar Postagem</button>
+        </form>
+        <hr>
+        <div id="postsContainer">
+            <!-- As postagens serão adicionadas aqui -->
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $('#postForm').on('submit', function(e) {
+                e.preventDefault();
+                
+                let date = $('#date').val();
+                let title = $('#title').val();
+                let content = $('#content').val();
+                
+                let postHtml = `
+                    <div class="thumbnail">
+                        <div class="box clearfix">
+                            <div>
+                                <strong>${date.split(' ')[0]}</strong>
+                                <span>${date.split(' ')[1]}</span>
+                            </div>
+                            <hr>
+                            <a href="#">${title}</a>
+                        </div>
+                        <div class="caption">
+                            <p>${content}</p>
+                        </div>
+                        <a href="#" class="btn-default btn2">read more <i></i></a>
+                    </div>
+                `;
+                
+                $('#postsContainer').append(postHtml);
+                
+                // Limpar o formulário
+                $('#postForm')[0].reset();
+            });
+        });
+    </script>
+</body>
+</html>

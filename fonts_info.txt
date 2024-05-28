@@ -1,0 +1,7 @@
+List of Fonts used in template 
+
+
+
+Pacifico		http://www.google.com/fonts/specimen/Pacifico
+Roboto Condensed	http://www.google.com/fonts/specimen/Roboto+Condensed
+
